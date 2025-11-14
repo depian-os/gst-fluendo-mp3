@@ -1,0 +1,145 @@
+name: Build DEB Package
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-deb:
+    runs-on: ubuntu-latest
+    container:
+      image: debian:trixie
+      options: --user root
+
+    steps:
+    - uses: actions/checkout@v5
+    - name: Update package lists and install basic tools
+      run: |
+        apt update
+        apt install -y gpg ca-certificates
+        update-ca-certificates
+        echo "${{ secrets.GPG_PUBLIC_KEY }}" | gpg --dearmor > /tmp/depian-archive-keyring.gpg
+        cp /tmp/depian-archive-keyring.gpg /etc/apt/trusted.gpg.d/depian-archive-keyring.gpg
+        echo "deb https://depian-os.github.io/dev-repository/depian depian main" | tee /etc/apt/sources.list.d/depian.list
+        # 临时解决方案：允许不安全的连接用于 GitHub Pages
+        apt-get -o Acquire::https::depian-os.github.io::Verify-Peer=false update
+        apt install -y build-essential devscripts dh-make apt-utils
+
+    - name: Determine source format and generate orig tarball if needed
+      run: |
+        set -e
+        # Check if quilt format requires orig tarball
+        if [ -f debian/source/format ]; then
+          SOURCE_FORMAT=$(head -1 debian/source/format)
+          case "$SOURCE_FORMAT" in
+            "3.0 (quilt)"*)
+              echo "::notice::Detected quilt format package, generating orig tarball"
+              
+              # Extract source name and version
+              SOURCE_NAME=$(dpkg-parsechangelog -S Source)
+              UPSTREAM_VERSION=$(dpkg-parsechangelog -S Version | sed 's/-[^-]*$//; s/^[0-9]\+://')
+
+              ORIG_TARBALL="${SOURCE_NAME}_${UPSTREAM_VERSION}.orig.tar.gz"
+              TEMP_DIR=$(mktemp -d)
+              cd ..
+              cp -r "${SOURCE_NAME}/." "${TEMP_DIR}/"
+              rm -rf "${TEMP_DIR}/debian"
+              tar -czf "${ORIG_TARBALL}" -C "${TEMP_DIR}" .
+              rm -rf "${TEMP_DIR}"
+              
+              echo "::notice::Orig tarball created: ../${SOURCE_NAME}_${UPSTREAM_VERSION}.orig.tar.gz"
+              ;;
+            *)
+              echo "::notice::Native package format detected, no orig tarball needed"
+              ;;
+          esac
+        else
+          echo "::warning::Missing debian/source/format, assuming native package format"
+        fi
+
+    - name: Install build dependencies
+      run: |
+        mk-build-deps -i -t "apt-get -y" "./debian/control"
+
+    - name: Create DEB package
+      run: dpkg-buildpackage -us -uc -b
+
+    - name: Import GPG key
+      run: |
+        echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import --quiet
+        
+    - name: Copy deb to apt-repository pool
+      run: |
+        # Remove debug symbols packages if they exist
+        if ls ../*dbgsym*.deb 1> /dev/null 2>&1; then
+          rm ../*dbgsym*.deb
+        fi
+        
+        # Clone dev-repository repository
+        git clone https://github.com/${{ github.repository_owner }}/dev-repository.git
+        cd dev-repository
+        
+        # Determine repository name and pool directory structure
+        REPO_NAME=$(basename ${{ github.repository }})
+        
+        # Handle special case for lib* packages
+        case "$REPO_NAME" in
+          lib*)
+            # For packages starting with lib, use first 4 characters for subdirectory
+            if [ ${#REPO_NAME} -ge 4 ]; then
+              POOL_SUBDIR="lib$(echo $REPO_NAME | cut -c4)"
+            else
+              POOL_SUBDIR="lib"
+            fi
+            ;;
+          *)
+            # For regular packages, use first character
+            POOL_SUBDIR="$(echo $REPO_NAME | cut -c1)"
+            ;;
+        esac
+        
+        # Create pool directory structure
+        POOL_DIR="depian/pool/main/$POOL_SUBDIR/$REPO_NAME"
+        
+        # Clean POOL_DIR if it exists and is not empty
+        if [ -d "$POOL_DIR" ] && [ "$(ls -A $POOL_DIR)" ]; then
+          echo "Cleaning existing POOL_DIR: $POOL_DIR"
+          rm -rf "$POOL_DIR"/*
+        fi
+        
+        mkdir -p "$POOL_DIR"
+        
+        # Copy deb packages to pool directory
+        cp ../../*.deb "$POOL_DIR/"
+
+        cd depian/
+
+        apt-ftparchive packages pool/main > dists/depian/main/binary-amd64/Packages
+
+        # Create Release file with Suite and Codename
+        apt-ftparchive release \
+            -o "APT::FTPArchive::Release::Origin=depian-os.github.io" \
+            -o "APT::FTPArchive::Release::Label=Depian OS Repository" \
+            -o "APT::FTPArchive::Release::Suite=depian" \
+            -o "APT::FTPArchive::Release::Codename=depian" \
+            dists/depian > dists/depian/Release
+
+        # Sign Release file
+        gpg --batch --yes --armor --sign --detach-sign -o dists/depian/Release.gpg dists/depian/Release
+
+        # Create InRelease file (signed with inline signature)
+        gpg --batch --yes --clearsign --local-user ${{ secrets.GIT_EMAIL }} -o dists/depian/InRelease dists/depian/Release
+
+        cd ../
+        # Configure git
+        git config --global user.name "${{ secrets.GIT_USER }}"
+        git config --global user.email "${{ secrets.GIT_EMAIL }}"
+        
+        # Add and commit changes
+        git add .
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Add $REPO_NAME packages to pool"
+          # 使用Personal Access Token进行push
+          git push https://${{ secrets.PUSH_TOKEN }}@github.com/${{ github.repository_owner }}/dev-repository.git master
+        fi
