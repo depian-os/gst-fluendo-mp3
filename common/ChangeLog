@@ -1,0 +1,789 @@
+2014-11-25  Andoni Morales <amorelas@fluendo.com>
+
+	* m4/libtool.mk:
+	Rename function with the same name
+
+2014-11-25  Andoni Morales <amorelas@fluendo.com>
+
+	* m4/libtool.mk:
+	Append flags at the end of the command
+
+2014-11-25  Andoni Morales <amorelas@fluendo.com>
+
+	* m4/libtool.mk:
+	parse inherited_linker_flags and include them in them
+	in the link command
+
+2014-11-24  Andoni Morales <amorelas@fluendo.com>
+
+	* m4/libtool.mk:
+	Add missing coma and include more debug
+
+2014-11-24  Andoni Morales <amorelas@fluendo.com>
+
+	* m4/libtool.mk:
+	* m4/staticplugins.m4:
+	Add support for tunning GStreamer libraries
+	link type (static or dynamic)
+
+2014-11-11  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Silence GST_TRACE when building with old GStreamer versions. 
+
+2014-11-04  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Add missing backward compat definition.
+
+2014-10-13  Xavi Artigas  <xartigas@fluendo.com>
+
+	* gst-compat.h:
+	Fix even more warnings (this one, and the two previous commits,
+	are needed to build on Fedora5)
+
+2014-10-13  Xavi Artigas  <xartigas@fluendo.com>
+
+	* gst-demo.h:
+	Fix warning
+
+2014-10-13  Xavi Artigas  <xartigas@fluendo.com>
+
+	* gst-compat.h:
+	Fix warning
+
+2014-10-03  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	Drop -ftree-vectorize that slipped into common by error while
+	experimenting with it.
+
+2014-09-26  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Add gst_event_has_name replacement for older GStreamer 0.10 versions.
+
+2014-07-21  Xavi Artigas  <xartigas@fluendo.com>
+
+	* gst-demo.h:
+	Fix precedence of = and ==. This only triggered a problem when
+	compiling the h265 plugin, because it uses C++ and the result of
+	a == is a boolean, not an int which can be silently converted
+	to an enum.
+
+2014-06-19  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Provide replacement for gst_adapter_unmap in GStreamer 0.10.
+
+2014-05-14  Andoni Morales  <amorales@fluendo.com>
+
+	* m4/staticplugins.m4:
+	Add replacement for d3dvideosink
+
+2014-05-12  Andoni Morales  <amorales@fluendo.com>
+
+	* gst-compat.h:
+	Fix compiler error casting from gpointer to guint8 *
+
+2014-05-07  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Add few more replacements for 0.10.
+
+2014-05-07  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Add gst_buffer_new_wrapped replacement for 0.10.
+
+2014-04-02  Jorge Zapata  <jzapata@fluendo.com>
+
+	* m4/ipp.m4:
+	Do not use ipp on non-intel archs
+
+2014-04-01  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Add a replacement for g_list_free_full in order to allow builds
+	with older glib2.
+
+2014-04-01  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Provide guintptr definition to allow builds wiht older glib2.
+
+2014-03-25  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Add a replacement for gst_caps_steal_structure.
+
+2014-03-14  Jorge Zapata <jzapata@fluendo.com>
+
+	* doc:
+	* doc/Doxyfile_common.in:
+	* doc/css:
+	* doc/css/stylesheet.css:
+	* doc/doxygen_to_devhelp.xsl:
+	* doc/footer.html:
+	* doc/header.html:
+	* doxygen.mak:
+	Add the documentation common files
+
+2014-01-28  Andoni Morales <amorales@fluendo.com>
+
+	* m4/platform.m4: Add detection support for iOS 
+
+2014-01-18  Julien Moutte <julien@fluendo.com>
+
+	* m4/ipp.m4: when linking on Windows we need to make
+	sure that we pull symbols from MSVCRT instead of NTDLL.
+	Indeed I've seen sscanf from NTDLL seriously break and the
+	symbol was used from NTDLL because of our link flag from ipp.
+
+2014-01-16  Andoni Morales  <amorales@fluendo.com>
+
+	* m4/platform.m4:
+	Add solaris platform detection
+
+2013-12-27  Andoni Morales  <amorales@fluendo.com>
+
+	* wibu.m4:
+	Add framework search path for Mavericks
+
+2013-12-27  Andoni Morales  <amorales@fluendo.com>
+
+	* wibu.m4:
+	Fix library names in Windows
+
+2013-12-27  Xavi Artigas  <xartigas@fluendo.com>
+
+	* m4/wibu.m4:
+	Use correct WIBU CodeMeter Linux library.
+
+2013-12-24  Andoni Morales  <amorales@fluendo.com>
+
+	* wibu.m4:
+	Add an option to check for AxProtector, CodeMeter or both
+
+2013-12-24  Andoni Morales  <amorales@fluendo.com>
+
+	* platform.m4:
+	Add macro for platform detection
+	* wibu.m4:
+	Add macro for WIBU detection
+
+2013-12-20  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Add gst_caps_set_value replacement for older GStreamer versions.
+
+2013-11-29  Julien Moutte <julien@fluendo.com>
+
+	* fluendo-plugins-sdk.props: Prepare for 1.0 build while maintaining
+	backward compatibility with old project files.
+
+2013-11-25  Andoni Morales <amorales@fluendo.com>
+
+	* m4/staticplugins.am:
+	Fix registry names for windows plugins
+
+2013-11-22  Andoni Morales <amorales@fluendo.com>
+
+	* m4/libtool.mk: Remove '=' from search paths (as seen in windows)
+
+2013-11-15  Andoni Morales <amorales@fluendo.com>
+
+	* m4/staticplugins.am: Use the more portable printf and
+	fix plugin regsitry entry point for osxvideosink
+
+2013-11-15  Andoni Morales <amorales@fluendo.com>
+
+	* m4/libtool.mk: Add missing -l to shared libraries that don't have it
+
+2013-11-15  Andoni Morales <amorales@fluendo.com>
+
+	* m4/libtool.mk: Import helper from the android ndk
+	* m4/staticplugins.am:
+	Add a new helper to transform a list of plugins into
+	a linker command linking gstreamer and its plugins
+	statically and the rest as shared libraries
+
+2013-11-15  Andoni Morales <amorales@fluendo.com>
+
+	* m4/staticplugins.am: Automake helper for static plugins
+
+2013-11-04  Julien Moutte <julien@fluendo.com>
+
+	* gst-demo.h: Need to include the base class for audio encoder.
+
+2013-11-04  Julien Moutte <julien@fluendo.com>
+
+	* gst-demo.h: Fix small mistakes in my previous commit for 1.0.
+
+2013-11-04  Julien Moutte <julien@fluendo.com>
+
+	* gst-compat.h: Add backward definition for GST_FLOW_EOS and _FLUSHING
+	* gst-demo.h: Add a demo handling function for audio encoder base class
+	Remove useless functions and fix a potential race occuring when EOS is
+	handled before ERROR from demo code.
+
+2013-10-04  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	Support specific tunning flag introduced in gcc 4.8.
+
+2013-10-03  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	Add cpu tunning for Marvell Dove.
+
+2013-10-03  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	Add a flag to enable arm v6 conditional code.
+
+2013-09-26  Andoni Morales <amorales@fluendo.com>
+
+	* m4/ipp.m4:
+	_allmul and _chkstk are symbols from ntdll.dll that
+	are not correctly defined in mingw's ntdll.def.
+	The fix is therefore in MinGW's generated libntdll.a
+
+2013-09-25  Andoni Morales <amorales@fluendo.com>
+
+	* m4/ipp.m4:
+	Add libippmsvccpompat.a to the link providing the missing
+	allmul and chkstk stub symbols
+
+2013-09-25  Andoni Morales <amorales@fluendo.com>
+
+	* m4/ipp.m4:
+	Don't use the hack for MinGW anymore and use instead
+	libtool libraries for the ipp libs to help the link
+	of the static libraries in a shared module in Windows
+
+2013-09-23  Andoni Morales <amorales@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	Disable -znoexecstack for mingw
+	Fix pass of -no-undefined to libtool (not as a linker flag)
+
+2013-06-21  Andoni Morales <amorales@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	Disable -ftree-vectorize, which conflicts with -fno-strict-aliasing
+
+2013-06-11  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Use same type in 0.10 and 1.0.
+
+2013-06-04  Andoni Morales  <amorales@fluendo.com>
+
+	* m4/ipp.m4:
+	Fix IPP_PREFIX in windows
+
+2013-06-04  Andoni Morales  <amorales@fluendo.com>
+
+	* m4/gst-static-plugin.m4:
+	Fix typo
+
+2013-06-04  Josep Torra  <josep@fluendo.com>
+
+	* gst-fluendo.h:
+	* m4/gst-static-plugin.m4:
+	Simplify support code for builing static plugins.
+
+2013-06-04  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-check.m4:
+	Allow to specify the GStreamer API version with the '--with-gstreamer-api'
+	configure flag.
+
+2013-06-03  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-error.m4:
+	Instead of disable deprecation warning just disable glib deprecations.
+
+2013-05-31  Josep Torra  <josep@fluendo.com>
+
+	* m4/ipp.m4:
+	Clarify that IPP Merged is only for Linux and Solaris.
+
+2013-05-31  Josep Torra  <josep@fluendo.com>
+
+	* m4/ipp.m4:
+	Rework on the IPP related macros.
+
+2013-05-22  Jorge Zapata  <jzapata@fluendo.com>
+
+	* gst-autogen.sh:
+	Accept --host as a valid argument to be provided to configure.
+
+2013-04-30  Andoni Morales Alastruey  <amorales@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	Fix build of dll's in Windows
+
+2013-04-18  Julien Moutte <julien@fluendo.com>
+
+	* Makefile.am: Properly include gst-demo.h in tarballs.
+	* gst-demo.h: Make the default demo duration 3 minutes in case we 
+	can't find the duration to be consistent.
+
+2013-04-10  Jorge Zapata  <jzapata@fluendo.com>
+
+	* gst-demo.h:
+	when setting up the statistics be sure to reset them first
+	Initialize the decoded time to zero after getting the real duration
+
+2013-04-10  Jorge Zapata  <jzapata@fluendo.com>
+
+	* gst-demo.h:
+	Split some functions to ease the demo developing on elements that are not decoders
+
+2013-04-09  Jorge Zapata  <jzapata@fluendo.com>
+
+	* gst-demo.h:
+	Add more demo helpers
+	Do not unref the buffer on check, only when pushing or finishing a buffer/frame
+
+2013-04-09  Jorge Zapata  <jzapata@fluendo.com>
+
+	* gst-demo.h:
+	Add video decoders specific demo functions
+
+2013-04-05  Jorge Zapata <jzapata@fluendo.com>
+
+	* gst-demo.h:
+	* gst-fluendo.h:
+	Initial approach for demo support on GStreamer 1.0
+	Split the demo code from the gst-fluendo.h header
+	Older demo macros do not provide the demo functionality anymore but
+	projects using it can still compile
+
+2013-02-18  Andoni Morales Alastruey  <amorales@fluendo.com>
+
+	* ipp_mingw.py:
+	More this script to a better place
+
+2013-02-18  Andoni Morales Alastruey  <amorales@fluendo.com>
+
+	* ipp_mingw.py:
+	Add script to install IPP's for mingw and cerbero
+
+2013-02-14  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	Add some more ARM tunning options.
+
+2013-02-07  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Add GST_FLOW_CUSTOM_SUCCESS definition for earlier GStreamer versions.
+
+2013-01-07  Andoni Morales Alastruey  <amorales@fluendo.com>
+
+	* m4/gst-static-plugin.m4:
+	Remove AS_CASE for older autotools
+
+2013-01-28  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-check.m4:
+	Change the macro to fallback to a default plugins base location.
+
+2013-01-23  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Allow use gst_buffer_map/_unmap sintax in GStreamer 0.10.
+
+2013-01-22  Xavi Artigas  <xartigas@fluendo.com>
+
+	* m4/gst-gettext.m4:
+	Add macro necessary for internationalization.
+
+2012-12-14  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Fixes macro by respecting the arguments.
+
+2012-10-09  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-check.m4:
+	Handle older GStreamer versions that doesn't provide .pc files
+	for audio/video libs.
+
+2012-10-03  Andoni Morales <amorales@fluendo.com>
+
+	* gst-fluendo.h:
+	Use GST_VERSION_MAJOR instead of GST_VERSION_CHECK, which is not
+	defined before 0.10.18
+
+2012-10-03  Andoni Morales <amorales@fluendo.com>
+
+	* m4/gst-fluendo.h:
+	Fix GST_PLUGIN_DEFINE for 1.0 where the plugin name is not a string anymore
+
+2012-10-05  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-check.m4:
+	Add macros to check for audio and video libraries. 
+
+2012-10-04  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Add g_onece_enter/leave replacement bits for older GLib.
+
+2012-10-04  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-check.m4:
+	Minor fixes in the macros.
+
+2012-10-03  Andoni Morales <amorales@fluendo.com>
+
+	* gst-fluendo.h:
+	* m4/gst-check.m4:
+	Fix includes for GST 1.0
+
+2012-10-03  Andoni Morales <amorales@fluendo.com>
+
+	* m4/gst-check.m4:
+	Define confitionals for makefiles and versions requirements
+
+2012-10-03  Andoni Morales  <amorales@fluendo.com>
+
+	* m4/gst-check.m4:
+	Add new macro for testing the gstreamer version
+
+2012-10-03  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Add more backward compatibility bits.
+
+2012-10-02  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Add more backward compatibility bits.
+
+2012-10-02  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Add more backward compatibility bits.
+
+2012-10-02  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Add more backward compatibility bits.
+
+2012-10-02  Josep Torra  <josep@fluendo.com>
+
+	* gst-fluendo.h:
+	Avoid colision by redefinition on gst-compat.h.
+	Keept here to be able build older releases.
+
+2012-10-02  Josep Torra  <josep@fluendo.com>
+
+	* gst-compat.h:
+	Add more backward compatibility bits.
+
+2012-07-19  Andoni Morales Alastruey <amorales@fluendo.com>
+
+	* m4/ipp.m4:
+	Add a check for __int64 in windows
+
+2012-07-16  Andoni Morales Alastruey <amorales@fluendo.com>
+
+	* m4/ipp.m4:
+	Don't override IPP_SUFFIX
+
+2012-07-16  Andoni Morales Alastruey <amorales@fluendo.com>
+
+	* m4/ipp.m4:
+	Add a better support for static builds on windows
+
+2012-07-12  Andoni Morales Alastruey <amorales@fluendo.com>
+
+	* m4/gst-static-plugins.m4:
+	Revert --disable-shared for static plugins
+
+2012-07-11  Andoni Morales Alastruey <amorales@fluendo.com>
+
+	* m4/gst-static-plugins.m4:
+	Configure with --disable-shared too
+
+2012-07-10  Andoni Morales Alastruey <amorales@fluendo.com>
+
+	* m4/ipp.m4:
+	Add support for MinGW builds in windows
+
+2012-06-22  Josep Torra <josep@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	Tune ARM build some more.
+
+2012-05-15  Julien Moutte <julien@fluendo.com>
+
+	* gst-compat.h: Add base adapter header for some function replacement.
+
+2012-05-15  Julien Moutte <julien@fluendo.com>
+
+	* gst-compat.h: Add some more macros.
+
+2012-05-15  Julien Moutte <julien@fluendo.com>
+
+	* gst-compat.h: Add some more macros.
+	* Makefile.am: Distribute the compat header.
+
+2012-05-15  Julien Moutte <julien@fluendo.com>
+
+	* gst-compat.h: Add header file for conditional compat definitions.
+	
+2012-04-13  Josep Torra  <josep@fluendo.com>
+
+	* m4/ipp.m4:
+	Move the code related to IPP_FUNC_PATH definition to the AG_CHECK_IPP
+	macro.
+	It allows to build older releases using the trunk common.
+
+2012-02-23  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	Add some more CPU tune configure flags for ARM.
+
+2012-01-20  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-error.m4:
+	When building with -Wall -Werror, disable error on deprecation
+	warnings. This is a workaround to build with new glib versions
+	that have deprecated the threading API.
+
+2011-12-05  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	Minor cosmetic changes on the enable VFP flag.
+
+2011-11-20  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	Minor fixes in the macro related to ARM.
+
+2011-11-18  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-args.m4:
+	Minor fix in the macro to avoid an error when there's spaces
+	in the package name.
+
+2011-10-06  Josep Torra  <josep@fluendo.com>
+
+	* m4/ipp.m4:
+	Fix build in Mac OSX.
+
+2011-07-20  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	Improve --enable-cpu-tune-atom to handle -march=atom available
+	in modern GCC versions.
+
+2011-06-29  Jorge Zapata <jzapata@fluendo.com>
+
+	* m4/ipp.m4:
+	Add the thread safe variant for ipp
+
+2011-06-28  Jorge Zapata  <jzapata@fluendo.com>
+
+	* m4/ipp.m4:
+	Always put ippcore at the end
+
+2011-06-27  Jorge Zapata  <jzapata@fluendo.com>
+
+	* m4/ipp.m4:
+	Add a common function to set the needed IPP variables, just pass
+	the list of IPP libraries you need to include
+
+2011-05-25  Josep Torra  <josep@fluendo.com>
+
+	* gst-autogen.sh:
+	Accept --build as a valid argument to be provided to configure.
+
+2011-04-01  Josep Torra  <josep@fluendo.com>
+
+	* m4/ipp.m4:
+	Fix location for IPP 7 in Mac OSX.
+
+2011-03-31  Jorge Zapata <jzapata@fluendo.com>
+
+	* gst-fluendo.h:
+	Modify the limits to 3 minuts minimum and 30 minuts maximum
+	Use the gstreamer macros to make the code more readable
+
+2011-02-09  Jorge Zapata <jzapata@fluendo.com>
+
+	* m4/gst-demo-plugin.m4:
+	Always define the ENABLE_DEMO_PLUGIN with the correct value
+
+2009-12-18  Thijs Vermeir <thijs@fluendo.com>
+
+	* m4/gst-static-plugin.m4: Don't loose prev CFLAGS when
+  using --enable-static-plugin
+
+2009-09-29  Josep Torra  <josep@fluendo.com>
+
+	* m4/ipp.m4:
+	Added some stuff to build with IPP in Mac OS X.
+
+2009-06-05  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-fionread.m4:
+	Fix 'suspicious cache id' warnings.
+
+2009-02-20  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	* m4/ipp.m4:
+	Added helpers to do builds for Intel Atom and IPP/lp32.
+
+2009-02-05  Sergi Alvarez  <salvarez@fluendo.com>
+
+	* Makefile.am: Add gst-fluendo.h in EXTRA_DIST
+
+2009-01-20  Sergi Alvarez  <salvarez@fluendo.com>
+
+	* gst-fluendo.h: #if -> #ifdef
+
+2009-01-20  Sergi Alvarez  <salvarez@fluendo.com>
+
+	* m4/gst-static-plugin.m4: Rename AG_GST_STATIC.. to AG_GST_ARG_STATIC..
+
+2009-01-20  Sergi Alvarez  <salvarez@fluendo.com>
+
+	* gst-fluendo.h: Initial import of the fluendo 'static-plugin' macro
+	* m4/gst-static-plugin.m4: Add --enable-static-plugin flag (implemented
+	in AG_GST_STATIC_PLUGIN m4 macro)
+
+2009-01-17  Julien Moutte  <julien@fluendo.com>
+
+	* m4/gst-cpu-tune.m4: Darwin does not have the execstack flag.
+	Fix the macro.
+
+2008-11-28  Josep Torra  <josep@fluendo.com>
+
+	* m4/ipp.m4:
+	Fix IPP version sorting.
+
+2008-11-26  Josep Torra  <josep@fluendo.com>
+
+	* m4/ipp.m4:
+	Added IPP emt64 single architectures.
+
+2008-11-26  Josep Torra  <josep@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	No execstack fixed for solaris. 
+
+2008-10-15  Sergi Alvarez  <salvarez@fluendo.com>
+
+	* m4/Makefile.am: Drop cflags.m4
+	* m4/cflags.m4: Removed file
+	* m4/gst-cpu-tune.m4: Merge cflags.m4 here. Add SunCC check
+
+2008-10-15  Sergi Alvarez  <salvarez@fluendo.com>
+
+	* m4/Makefile.am: Include cflags.m4 for extra-dist
+	* m4/cflags.m4: Initial import of the global cflags/ldflags setup
+
+2008-06-17  Paul Brossier  <piem@fluendo.com>
+
+	* m4/ipp.m4: if --without-ipp is used, define HAVE_IPP to false
+
+2008-06-09  Paul Brossier  <piem@fluendo.com>
+
+	* m4/ipp.m4: add AG_CHECK_IPP macro to check for Intel Integrated
+	Performance Primitives (IPP).
+
+2007-11-14  Christophe Eymard  <ceymard@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	Added support for -xO5 for Solaris (default optimization is not
+	added by the autotools)
+	* m4/gst-error.m4:
+	In solaris, added -features=no%extinl to treat extern inlines
+	as they used to be.
+
+2007-11-07  Josep Torra Valles  <josep@fluendo.com>
+
+	* m4/gst-check.m4:
+	Add POST_10_11 to POST_10_14.
+	Patch provided by Christophe Eymard <ceymard@fluendo.com>
+
+2007-10-24  Josep Torra Valles  <josep@fluendo.com>
+
+	* m4/gst-check.m4:
+	When gstreamer version is checked, check for >= 0.10.10 and set
+	POST_10_10 on config.h
+
+2007-09-03  Josep Torra Valles  <josep@fluendo.com>
+
+	* m4/gst-cpu-tune.m4:
+	Added -fomit-frame-pointer at tunning profile for N800.
+
+2007-08-29  Josep Torra Valles  <josep@fluendo.com>
+
+	* m4/Makefile.am:
+	* m4/gst-cpu-tune.m4:
+	Added to make easier add plataform specific build flags.
+
+2007-05-23  Edward Hervey  <edward@fluendo.com>
+
+	* m4/ax_create_stdint_h.m4:
+	Added from gstreamer common.
+	Needed for gst-fluendo-wmaenc.
+
+2007-05-14  Josep Torra Valles  <josep@fluendo.com>
+
+	* m4/check.m4:
+	  Added to make projects compile under sbox.
+
+2007-04-10  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* m4/gst-check.m4:
+	  Allow pre-setting the GST(PB)_TOOLS/PLUGINS_DIR variables to help
+	  builds against older GStreamer.
+
+2007-02-28  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* m4/as-ac-expand.m4:
+	* m4/gst-plugindir.m4:
+	* m4/gst-args.m4:
+	* m4/Makefile.am
+	  add these macros
+
+2007-02-28  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* m4/as-version.m4:
+	  update AS_VERSION.  Needs updating configure.ac in all
+	  Fluendo GStreamer modules too.
+
+2007-02-28  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* update to new AG_GST style macros
+	* add gst-args, gst-valgrind, gst-check
+
+2007-02-28  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* add check.mak and gst.supp
+
+2006-10-10  Josep Torra Valles  <josep@fluendo.com>
+
+	* m4/gst-fionread.m4:
+	  adding a copy of the check macro
+
+2006-05-30  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* m4/gst-error.m4:
+	  adding a copy of the error macro
+
+2006-03-30  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* share among modules
+
+

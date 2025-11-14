@@ -1,0 +1,11 @@
+gst-fluendo-mp3 (0.10.32-0depian1) UNRELEASED; urgency=medium
+
+  * update
+
+ -- Maintainers of GStreamer packages <pkg-gstreamer-maintainers@lists.alioth.debian.org>  Tue, 24 May 2022 21:42:30 -0400
+
+gst-fluendo-mp3 (0.10.32.deepin-1+back) unstable; urgency=low
+
+  * ['Autobuild release-candidate: 6dea972a09bb28e6ccf050e53d015c59675cf70a']
+
+ -- shuttle <shuttle@deepin.com>  Fri, 26 Jul 2019 16:19:08 +0000

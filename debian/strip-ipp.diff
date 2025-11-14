@@ -1,0 +1,63 @@
+diff -Nurp a/gst-fluendo-mp3-0.10.28/configure.ac gst-fluendo-mp3-0.10.28/configure.ac
+--- a/gst-fluendo-mp3-0.10.28/configure.ac	2014-06-17 18:09:01.000000000 +0100
++++ gst-fluendo-mp3-0.10.28/configure.ac	2014-06-25 12:51:09.255366733 +0100
+@@ -10,6 +10,8 @@ dnl releases only do -Wall, cvs and prer
+ AC_INIT(GStreamer Fluendo MP3 Decoder, 0.10.28,,
+     gst-fluendo-mp3)
+ 
++AC_CONFIG_MACRO_DIR([common/m4])
++
+ AG_GST_INIT
+ 
+ dnl initialize automake
+@@ -81,9 +83,6 @@ if test "x$HAVE_PKGCONFIG" = "xno"; then
+   AC_MSG_ERROR(you need to have pkgconfig installed !)
+ fi
+ 
+-dnl Setup for finding IPP libraries. Attempt to detect by default.
+-AG_NEED_IPP("ippac ipps")
+-
+ dnl Now we're ready to ask for gstreamer libs and cflags
+ dnl And we can also ask for the right version of gstreamer
+ 
+diff -Nurp a/gst-fluendo-mp3-0.10.28/Makefile.am gst-fluendo-mp3-0.10.28/Makefile.am
+--- a/gst-fluendo-mp3-0.10.28/Makefile.am	2014-06-17 18:07:27.000000000 +0100
++++ gst-fluendo-mp3-0.10.28/Makefile.am	2014-06-25 12:51:34.631367330 +0100
+@@ -1,3 +1,5 @@
++ACLOCAL_AMFLAGS = -I common/m4
++
+ SUBDIRS = src common util win32
+ 
+ EXTRA_DIST = gst-fluendo-mp3.spec LICENSE autogen.sh
+diff -Nurp a/gst-fluendo-mp3-0.10.28/src/Makefile.am gst-fluendo-mp3-0.10.28/src/Makefile.am
+--- a/gst-fluendo-mp3-0.10.28/src/Makefile.am	2014-06-17 18:07:27.000000000 +0100
++++ gst-fluendo-mp3-0.10.28/src/Makefile.am	2014-06-25 12:34:40.599343494 +0100
+@@ -8,16 +8,6 @@ DECODER_SOURCE_FILES = \
+     decode.c \
+     mp3tl.c
+ 
+-if USE_IPP
+-DECODER_SOURCE_FILES += mp3-ipp.c
+-DECODER_INCLUDES = $(IPP_INCLUDES)
+-if GST_PLUGIN_BUILD_STATIC
+-  DECODER_LIBS =
+-else
+-  DECODER_LIBS = -L$(IPP_PATH)/lib $(IPP_TRAMPOLINE_LIBS) $(IPP_LIBS)
+-endif
+-endif
+-
+ libgstflump3dec_la_SOURCES = \
+     flump3dec.c \
+     $(DECODER_SOURCE_FILES)
+@@ -33,11 +23,9 @@ noinst_HEADERS = \
+     mp3tl-priv.h \
+     table-bitalloc.h \
+     table-dewindow.h \
+-    table-dewindow-ipp.h \
+     table-huffdec.h \
+     mp3-cos-tables.h \
+     mp3-c.h \
+-    mp3-ipp.h \
+     table-powtable.h \
+     table-powtable-2.h
+ 

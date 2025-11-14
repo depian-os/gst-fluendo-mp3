@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@ --with autoreconf
+
+override_dh_auto_configure:
+	dh_auto_configure -- --with-gstreamer-api=1.0
+
+override_dh_install:
+	dh_install
+	rm -f $(CURDIR)/debian/gstreamer1.0-fluendo-mp3/usr/lib/*/gstreamer-1.0/*.la
+	mkdir -p $(CURDIR)/fake-home
+	GST_REGISTRY=$(CURDIR)/fake-home/registry.xml dh_gstscancodecs
+	rm -rf $(CURDIR)/fake-home

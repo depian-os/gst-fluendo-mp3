@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9,00"
+	Name="gstflump3dec"
+	ProjectGUID="{B9105F19-EE82-4277-A466-6A8AE1FC0BF8}"
+	RootNamespace="libgstflump3dec"
+	Keyword="Win32Proj"
+	TargetFrameworkVersion="131072"
+	>
+	<Platforms>
+		<Platform
+			Name="Win32"
+		/>
+	</Platforms>
+	<ToolFiles>
+		<ToolFile
+			RelativePath="..\..\..\..\..\..\..\Common.rules"
+		/>
+	</ToolFiles>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			ConfigurationType="2"
+			InheritedPropertySheets="..\..\..\..\..\..\..\Shared\MSVC\Properties\Platforms\x86-Debug.vsprops;..\..\..\..\..\Windows\Properties\fluendo-plugin.vsprops"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="Flex Tool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="Bison Tool"
+			/>
+			<Tool
+				Name="CommandLineTool"
+			/>
+			<Tool
+				Name="Perl 3 Tool"
+			/>
+			<Tool
+				Name="Glib Make Enums Tool"
+			/>
+			<Tool
+				Name="DotIn Generator Tool"
+			/>
+			<Tool
+				Name="Perl 2 Tool"
+			/>
+			<Tool
+				Name="Perl Tool"
+			/>
+			<Tool
+				Name="C Preprocessor Tool"
+			/>
+			<Tool
+				Name="Copy Tool"
+			/>
+			<Tool
+				Name="SDK VSProps Generation Tool"
+			/>
+			<Tool
+				Name="GObject Enum Generation Tool"
+			/>
+			<Tool
+				Name="GObject Marshaller Generation Tool"
+			/>
+			<Tool
+				Name="Symbols Generator Tool"
+			/>
+			<Tool
+				Name="Pkg-Config OAH Dependencies Tool"
+			/>
+			<Tool
+				Name="Header Installer Tool"
+			/>
+			<Tool
+				Name="Yasm Tool"
+			/>
+			<Tool
+				Name="SED Tool"
+			/>
+			<Tool
+				Name="Pkg-Config Tool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				InlineFunctionExpansion="0"
+				AdditionalIncludeDirectories="&quot;.&quot;;&quot;$(IPPROOT)\include&quot;"
+				MinimalRebuild="true"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="4"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="ippacemerged.lib ippacmerged.lib ippsemerged.lib ippsmerged.lib ippcorel.lib"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="&quot;$(IPPROOT)\lib&quot;"
+				GenerateDebugInformation="true"
+				SubSystem="2"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="1"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine=""
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			ConfigurationType="2"
+			InheritedPropertySheets="..\..\..\..\..\..\..\Shared\MSVC\Properties\Platforms\x86-Release.vsprops;..\..\..\..\..\Windows\Properties\fluendo-plugin.vsprops"
+			CharacterSet="2"
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="Flex Tool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="Bison Tool"
+			/>
+			<Tool
+				Name="CommandLineTool"
+			/>
+			<Tool
+				Name="Perl 3 Tool"
+			/>
+			<Tool
+				Name="Glib Make Enums Tool"
+			/>
+			<Tool
+				Name="DotIn Generator Tool"
+			/>
+			<Tool
+				Name="Perl 2 Tool"
+			/>
+			<Tool
+				Name="Perl Tool"
+			/>
+			<Tool
+				Name="C Preprocessor Tool"
+			/>
+			<Tool
+				Name="Copy Tool"
+			/>
+			<Tool
+				Name="SDK VSProps Generation Tool"
+			/>
+			<Tool
+				Name="GObject Enum Generation Tool"
+			/>
+			<Tool
+				Name="GObject Marshaller Generation Tool"
+			/>
+			<Tool
+				Name="Symbols Generator Tool"
+			/>
+			<Tool
+				Name="Pkg-Config OAH Dependencies Tool"
+			/>
+			<Tool
+				Name="Header Installer Tool"
+			/>
+			<Tool
+				Name="Yasm Tool"
+			/>
+			<Tool
+				Name="SED Tool"
+			/>
+			<Tool
+				Name="Pkg-Config Tool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				AdditionalIncludeDirectories="&quot;.&quot;;&quot;$(IPPROOT)\include&quot;"
+				RuntimeLibrary="2"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="ippac_l.lib ipps_l.lib ippcore_l.lib"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="&quot;$(IPPROOT)\lib&quot;"
+				GenerateDebugInformation="true"
+				SubSystem="2"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="1"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine=""
+			/>
+		</Configuration>
+	</Configurations>
+	<References>
+		<ProjectReference
+			ReferencedProjectIdentifier="{F987873B-2B88-4B1B-B627-F70DF4F91E50}"
+			CopyLocal="false"
+			CopyLocalDependencies="false"
+			UseInBuild="false"
+			UseDependenciesInBuild="false"
+			CopyLocalSatelliteAssemblies="false"
+			RelativePathToProject=".\Main\GStreamer\Windows\Build\Libraries\libgstbase.vcproj"
+		/>
+	</References>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+			>
+			<File
+				RelativePath="..\..\src\bitstream.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\common.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\decode.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\flump3dec.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\mp3-c-synth.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\mp3-c.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\mp3-ipp.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\mp3tl.c"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl;inc;xsd"
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
+			>
+			<File
+				RelativePath="..\..\src\bitstream.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\common.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\decode.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\flump3dec.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\common\gst-fluendo.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\mp3-c.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\mp3-cos-tables.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\mp3-ipp.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\mp3tl-priv.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\mp3tl.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\table-bitalloc.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\table-dewindow-ipp.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\table-dewindow.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\table-huffdec.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\table-powtable-2.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\table-powtable.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Resource Files"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
+			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
+			>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

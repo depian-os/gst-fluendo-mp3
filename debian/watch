@@ -1,0 +1,4 @@
+version=3
+
+opts=dversionmangle=s/\.debian$// \
+  http://core.fluendo.com/gstreamer/src/gst-fluendo-mp3/gst-fluendo-mp3-(.*)\.tar\.bz2
